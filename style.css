@@ -1,0 +1,430 @@
+:root {
+  --bg: #0B0E14;
+  --surface: #131826;
+  --surface-raised: #1A2032;
+  --gold: #E8B84B;
+  --red: #C1443A;
+  --text: #F2F0E8;
+  --muted: #8B93A1;
+  --line: #2A3040;
+
+  --cat-kdrama: #D97757;
+  --cat-webseries: #5B9BD5;
+  --cat-movie: #E8B84B;
+  --cat-anime: #8E7CC3;
+  --cat-misc: #7A8471;
+
+  --cat-fiction: #4C9F70;
+  --cat-nonfiction: #5B9BD5;
+  --cat-selfhelp: #E8B84B;
+  --purchased: #4C9F70;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 26px 24px;
+  text-align: center;
+  background: radial-gradient(ellipse at top, var(--surface) 0%, var(--bg) 70%);
+}
+
+.site-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.warning {
+  background: rgba(193, 68, 58, 0.12);
+  border: 1px solid var(--red);
+  color: #E8A39D;
+  font-size: 12.5px;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --- Tabs --- */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 10px 4px;
+  margin-right: 22px;
+  cursor: pointer;
+  position: relative;
+  top: 1px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+}
+
+/* --- Add form --- */
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.add-form input[type="text"] {
+  flex: 1 1 220px;
+}
+
+.add-form input,
+.add-form select {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.add-form input::placeholder {
+  color: var(--muted);
+}
+
+.add-form select {
+  cursor: pointer;
+}
+
+.add-form select option {
+  background: var(--bg);
+}
+
+.add-form button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+
+.add-form button:hover {
+  filter: brightness(1.08);
+}
+
+/* --- Filter pills --- */
+.filter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.pill {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 6px 13px;
+  font-size: 12.5px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.pill.active {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+/* --- Empty state --- */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* --- Item list --- */
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 12px 14px;
+  animation: fade-in 0.15s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.item-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  background: var(--surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.item-text {
+  min-width: 0;
+}
+
+.item-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-category {
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 8px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.delete-btn:hover {
+  color: var(--red);
+}
+
+/* --- Book rows --- */
+.book-row {
+  align-items: center;
+}
+
+.book-row.purchased {
+  border-color: var(--purchased);
+  background: rgba(76, 159, 112, 0.08);
+}
+
+.book-row.purchased .item-name {
+  color: var(--purchased);
+}
+
+.book-rank {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--surface-raised);
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.book-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11.5px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tag-btn.active {
+  background: var(--purchased);
+  border-color: var(--purchased);
+  color: #0B0E14;
+  font-weight: 700;
+}
+
+.order-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.order-btn:hover:not(:disabled) {
+  color: var(--gold);
+}
+
+.order-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* category-specific colors */
+.cat-kdrama { color: var(--cat-kdrama); }
+.cat-webseries { color: var(--cat-webseries); }
+.cat-movie { color: var(--cat-movie); }
+.cat-anime { color: var(--cat-anime); }
+.cat-misc { color: var(--cat-misc); }
+
+/* --- Book rows --- */
+.book-row .item-info {
+  gap: 10px;
+}
+
+.reorder-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.order-btn {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 3px;
+  width: 22px;
+  height: 18px;
+  font-size: 9px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.order-btn:hover:not(:disabled) {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.order-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.purchased-tag {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 2px;
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+}
+
+.purchased-tag:hover {
+  text-decoration: underline;
+}
+
+.book-row.purchased .purchased-tag {
+  color: #4C9F70;
+  font-weight: 600;
+}
+
+.book-row.purchased .item-icon,
+.book-row.purchased .reorder-btns .order-btn {
+  border-color: #4C9F70;
+}
+
+.read-btn {
+  font-size: 12px;
+  color: var(--muted);
+  width: auto;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.read-btn:hover {
+  color: var(--gold);
+}
+.cat-fiction { color: var(--cat-fiction); }
+.cat-nonfiction { color: var(--cat-nonfiction); }
+.cat-selfhelp { color: var(--cat-selfhelp); }

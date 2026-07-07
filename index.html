@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Watchlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>THE WATCHLIST</h1>
+  </header>
+
+  <main>
+    <div id="storage-warning" class="warning hidden">
+      Couldn't reach the server — is it running?
+    </div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="show">Shows</button>
+      <button class="tab" data-tab="book">Books</button>
+    </div>
+
+    <form id="add-form" class="add-form">
+      <input
+        type="text"
+        id="name-input"
+        placeholder="What are you watching?"
+        autocomplete="off"
+        required
+      />
+      <select id="category-input"></select>
+      <button type="submit">+ ADD</button>
+    </form>
+
+    <div id="filter-pills" class="filter-pills"></div>
+
+    <div id="empty-state" class="empty-state hidden">
+      <p>Nothing on the list yet. Add your first one above.</p>
+    </div>
+
+    <ul id="item-list" class="item-list"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
