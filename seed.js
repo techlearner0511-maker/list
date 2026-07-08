@@ -2,7 +2,11 @@
 // Safe to re-run: it skips any name+type combo that's already in the database.
 //   node seed.js
 
-const { sql } = require("@vercel/postgres");
+const { neon } = require("@neondatabase/serverless");
+
+const sql = neon(process.env.DATABASE_URL || process.env.POSTGRES_URL, {
+  fullResults: true,
+});
 
 const shows = [
   ["The Richest Man in Game", "misc"],

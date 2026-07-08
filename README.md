@@ -3,7 +3,13 @@
 ## What changed from the local version
 Instead of one Express server writing to a `data.json` file, this version uses:
 - `/api/items.js` and `/api/items/[id].js` — small serverless functions Vercel runs on demand
-- A real Postgres database (via Vercel's built-in Storage) to actually save your data permanently
+- A real Postgres database to actually save your data permanently
+
+> **Note:** Vercel retired its own built-in "Vercel Postgres" storage product. The free
+> Postgres option today is **Neon**, offered as a Marketplace integration (billed/managed
+> through your Vercel dashboard, so it still feels first-party). This project's code now
+> talks to Neon via the `@neondatabase/serverless` package instead of the old
+> `@vercel/postgres` package — everything else about the workflow below is the same.
 
 ## Step-by-step deployment
 
@@ -24,11 +30,11 @@ git push -u origin main
 4. Leave all settings as default → click **Deploy**
 5. It'll deploy, but the site won't work yet — you still need the database (next step)
 
-### 3. Add a free Postgres database
+### 3. Add a free Postgres database (Neon)
 1. In your project on Vercel, click the **Storage** tab
-2. Click **Create Database** → choose **Postgres** (powered by Neon) → pick the **Free** plan
-3. Click **Connect** to link it to your project — Vercel automatically adds the required
-   environment variables (`POSTGRES_URL`, etc.) for you. No manual config needed.
+2. Click **Create Database** (or **Browse Marketplace**) → choose **Neon** → pick the **Free** plan
+3. Click **Connect** to link it to your project — Vercel automatically adds a
+   `DATABASE_URL` environment variable for you. No manual config needed.
 4. Go to **Deployments** → click the **...** menu on the latest deployment → **Redeploy**
    (this makes sure your app picks up the new database connection)
 
